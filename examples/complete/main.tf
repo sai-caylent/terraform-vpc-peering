@@ -1,5 +1,5 @@
 module "vpc_peering_cross_account" {
-  source = "../"
+  source = "../.."
 
   requester_aws_assume_role_arn             = var.requester_aws_assume_role_arn
   requester_region                          = var.requester_region
