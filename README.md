@@ -101,7 +101,6 @@ module "vpc_peering_cross_account" {
 | <a name="input_secret_name"></a> [requester_vpc_id](#input\_secret\_name) | Requester VPC ID filter | `string` | n/a | yes |
 | <a name="input_secret_name"></a> [requester_allow_remote_vpc_dns_resolution](#input\_secret\_name) | Allow requester VPC to resolve public DNS hostnames to private IP addresses when queried from instances in the accepter VPC | `string` | n/a | yes |
 | <a name="input_secret_name"></a> [accepter_aws_assume_role_arn](#input\_secret\_name) | Accepter AWS Assume Role ARN | `string` | n/a | yes |
-
 | <a name="input_secret_name"></a> [accepter_region](#input\_secret\_name) | Accepter AWS region | `string` | n/a | yes |
 | <a name="input_secret_name"></a> [accepter_vpc_id](#input\_secret\_name) | Accepter VPC ID filter | `string` | n/a | yes |
 | <a name="input_secret_name"></a> [accepter_allow_remote_vpc_dns_resolution](#input\_secret\_name) | Allow accepter VPC to resolve public DNS hostnames to private IP addresses when queried from instances in the requester VPC | `string` | n/a | yes |
@@ -112,10 +111,10 @@ module "vpc_peering_cross_account" {
 
 | Name | Description |
 |------|-------------|
-| <a name="output_secret_name"></a> [requester_connection_id](#output\_secret\_name) | n/a |
-| <a name="output_secret_name"></a> [requester_accept_status](#output\_secret\_name) | n/a |
-| <a name="output_secret_name"></a> [accepter_connection_id](#output\_secret\_name) | n/a |
-| <a name="output_secret_name"></a> [accepter_accept_status](#output\_secret\_name) | n/a |
+| <a name="output_secret_name"></a> [requester_connection_id](#output\_secret\_name) | Requester VPC peering connection ID |
+| <a name="output_secret_name"></a> [requester_accept_status](#output\_secret\_name) | Requester VPC peering connection request status |
+| <a name="output_secret_name"></a> [accepter_connection_id](#output\_secret\_name) | Accepter VPC peering connection ID |
+| <a name="output_secret_name"></a> [accepter_accept_status](#output\_secret\_name) | Accepter VPC peering connection request status |
 
 ## Resources
 
