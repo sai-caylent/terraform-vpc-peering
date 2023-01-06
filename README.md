@@ -1,5 +1,4 @@
-# terraform-module-template
--->
+# terraform-aws-vpc-peering-multi-account
 
 Terraform module to create a peering connection between any two VPCs existing in different AWS accounts.
 
@@ -30,7 +29,6 @@ However, Terraform only allows the VPC Peering Connection to be deleted from the
 ```terraform
 module "vpc_peering_cross_account" {
   source = "../"
-
 }
 ```
 
@@ -74,16 +72,15 @@ gh release create v0.0.5 --target main
 module "vpc_peering_cross_account" {
   source = "../"
 
-  requester_aws_assume_role_arn             = var.requester_aws_assume_role_arn
-  requester_region                          = var.requester_region
-  requester_vpc_id                          = var.requester_vpc_id
-  requester_allow_remote_vpc_dns_resolution = var.requester_allow_remote_vpc_dns_resolution
+  requester_aws_assume_role_arn             = "arn:aws:iam::XXXXXXXX:role/cross-account-vpc-peering-test"
+  requester_region                          = "us-east-2"
+  requester_vpc_id                          = "vpc-xxxxxxxx"
+  requester_allow_remote_vpc_dns_resolution = true
 
-
-  accepter_aws_assume_role_arn             = var.accepter_aws_assume_role_arn
-  accepter_region                          = var.accepter_region
-  accepter_vpc_id                          = var.accepter_vpc_id
-  accepter_allow_remote_vpc_dns_resolution = var.accepter_allow_remote_vpc_dns_resolution
+  accepter_aws_assume_role_arn             = "arn:aws:iam::YYYYYYYY:role/cross-account-vpc-peering-test"
+  accepter_region                          = "us-east-2"
+  accepter_vpc_id                          = "vpc-yyyyyyyy"
+  accepter_allow_remote_vpc_dns_resolution = true
 
   tags = var.tags
 }
@@ -93,13 +90,15 @@ module "vpc_peering_cross_account" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.35.0 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.4.3 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >=4.35.0 |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_secret_name"></a> [secret\_name](#input\_secret\_name) | The name of the secret stored as a parameter | `string` | n/a | yes |
+| <a name="input_secret_name"></a> [requester_aws_assume_role_arn](#input\_secret\_name) | Requester AWS Assume Role ARN | `string` | n/a | yes |
+<a name="input_secret_name"></a> [requester_region](#input\_secret\_name) | Requester AWS region | `string` | n/a | yes |
 ## Outputs
 
 | Name | Description |
