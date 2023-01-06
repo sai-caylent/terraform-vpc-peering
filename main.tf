@@ -1,17 +1,11 @@
-resource "random_password" "password" {
-  length           = 16
-  special          = true
-  override_special = "!#$%&*()-_=+[]{}<>:?"
+data "aws_vpc" "accepter" {
+  provider = aws.accepter
+  id       = var.accepter_vpc_id
 }
-
-
-resource "aws_ssm_parameter" "secret" {
-  name        = var.secret_name
-  description = "The parameter description"
-  type        = "SecureString"
-  value       = random_password.password.result
-
-  tags = {
-    environment = "production"
-  }
+data "aws_vpc" "requester" {
+  provider = aws.requester
+  id       = var.requester_vpc_id
+}
+data "aws_caller_identity" "peer" {
+  provider = aws.accepter
 }

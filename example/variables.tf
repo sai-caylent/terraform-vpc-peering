@@ -7,11 +7,13 @@ variable "requester_aws_assume_role_arn" {
   default     = null
 }
 variable "requester_region" {
-  type        = string
+   type        = string
   description = "Requester AWS region"
 }
 variable "requester_vpc_id" {
-  default = ""
+  type        = string
+  description = "Requester VPC ID filter"
+  default     = ""
 }
 variable "requester_allow_remote_vpc_dns_resolution" {
   type        = bool
@@ -27,13 +29,15 @@ variable "accepter_aws_assume_role_arn" {
   description = "Accepter AWS Assume Role ARN"
   default     = null
 }
-
 variable "accepter_region" {
   type        = string
   description = "Accepter AWS region"
 }
+
 variable "accepter_vpc_id" {
-  default = ""
+  type        = string
+  description = "Accepter VPC ID filter"
+  default     = ""
 }
 variable "accepter_allow_remote_vpc_dns_resolution" {
   type        = bool
@@ -45,13 +49,3 @@ variable "tags" {
   description = "The tags map to associate to the resources."
   default     = {}
 }
-################################################
-# Optional
-################################################
-
-variable "auto_accept" {
-  type        = bool
-  default     = true
-  description = "Automatically accept the peering"
-}
-
