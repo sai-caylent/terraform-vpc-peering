@@ -96,16 +96,31 @@ module "vpc_peering_cross_account" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_secret_name"></a> [secret\_name](#input\_secret\_name) | The name of the secret stored as a parameter | `string` | n/a | yes |
 | <a name="input_secret_name"></a> [requester_aws_assume_role_arn](#input\_secret\_name) | Requester AWS Assume Role ARN | `string` | n/a | yes |
-<a name="input_secret_name"></a> [requester_region](#input\_secret\_name) | Requester AWS region | `string` | n/a | yes |
+| <a name="input_secret_name"></a> [requester_region](#input\_secret\_name) | Requester AWS region | `string` | n/a | yes |
+| <a name="input_secret_name"></a> [requester_vpc_id](#input\_secret\_name) | Requester VPC ID filter | `string` | n/a | yes |
+| <a name="input_secret_name"></a> [requester_allow_remote_vpc_dns_resolution](#input\_secret\_name) | Allow requester VPC to resolve public DNS hostnames to private IP addresses when queried from instances in the accepter VPC | `string` | n/a | yes |
+| <a name="input_secret_name"></a> [accepter_aws_assume_role_arn](#input\_secret\_name) | Accepter AWS Assume Role ARN | `string` | n/a | yes |
+
+| <a name="input_secret_name"></a> [accepter_region](#input\_secret\_name) | Accepter AWS region | `string` | n/a | yes |
+| <a name="input_secret_name"></a> [accepter_vpc_id](#input\_secret\_name) | Accepter VPC ID filter | `string` | n/a | yes |
+| <a name="input_secret_name"></a> [accepter_allow_remote_vpc_dns_resolution](#input\_secret\_name) | Allow accepter VPC to resolve public DNS hostnames to private IP addresses when queried from instances in the requester VPC | `string` | n/a | yes |
+
+
+
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_secret_name"></a> [secret\_name](#output\_secret\_name) | n/a |
+| <a name="output_secret_name"></a> [requester_connection_id](#output\_secret\_name) | n/a |
+| <a name="output_secret_name"></a> [requester_accept_status](#output\_secret\_name) | n/a |
+| <a name="output_secret_name"></a> [accepter_connection_id](#output\_secret\_name) | n/a |
+| <a name="output_secret_name"></a> [accepter_accept_status](#output\_secret\_name) | n/a |
+
 ## Resources
 
-- resource.aws_ssm_parameter.secret (main.tf#8)
-- resource.random_password.password (main.tf#1)
+- resource.aws_vpc_peering_connection.requester (requester.tf#2)
+- resource.aws_route.requester (requester.tf#43)
+- resource.aws_vpc_peering_connection_accepter.accepter (accepter.tf#2)
+- resource.aws_route.accepter (accepter.tf#32)
 <!-- END_TF_DOCS -->
