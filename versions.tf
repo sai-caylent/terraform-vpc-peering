@@ -1,17 +1,3 @@
-# terraform {
-#   required_version = ">= 1.0.0"
-#   required_providers {
-#     aws = {
-#       source  = "hashicorp/aws"
-#       version = ">=4.13.0"
-#     }
-
-#     random = {
-#       source  = "hashicorp/random"
-#       version = ">=3.1.3"
-#     }
-#   }
-# }
 provider "aws" {
   alias  = "requester"
   region = var.requester_region
